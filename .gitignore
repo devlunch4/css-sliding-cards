@@ -1,0 +1,43 @@
+# ==============================================
+# 기본 .gitignore 예제
+# ==============================================
+
+# Node.js 관련
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+
+# Python 관련
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pycache/
+*.sqlite3
+venv/
+env/
+.env
+
+# IDE/Editor 관련
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS별 임시 파일
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 빌드 아티팩트
+dist/
+build/
+*.egg-info/
+*.egg
+*.log
+
+# 기타 임시 파일
+*.swp
+*.tmp
+*.bak

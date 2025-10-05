@@ -1,10 +1,10 @@
 # ==============================================
-# IDX dev.nix 환경 설정 (Python 기반)
+# IDX dev.nix 환경 설정
 # ==============================================
 # 목적:
-# - Python3 설치
-# - 루트 폴더 HTML 파일 웹 미리보기
-# - 파일 변경 시 IDX 웹 프리뷰에서 자동 새로고침
+# - Node.js 및 live-server 설치
+# - 루트 폴더 HTML 파일 실시간 웹 미리보기
+# - 파일 변경 시 자동 새로고침
 # - 기본 열 파일: index.html, README.md
 # - IDX web preview 사용, PORT 환경 변수 자동 설정
 # ==============================================
@@ -15,7 +15,8 @@
 
   # 설치할 패키지 목록
   packages = [
-    pkgs.python311        # Python 3.11 설치
+    pkgs.nodejs_20
+    pkgs.nodePackages.live-server
   ];
 
   # 환경 변수 설정
@@ -32,17 +33,8 @@
 
       previews = {
         web = {
-          # Python 내장 http.server로 웹 서버 실행
-          # - 루트 폴더 기준
-          # - PORT 환경 변수 사용
-          command = [
-            "python3"
-            "-m"
-            "http.server"
-            "$PORT"
-            "--bind"
-            "0.0.0.0"
-          ];
+          # 웹 프리뷰용 명령어
+          command = ["npx" "live-server" "--port=$PORT" "--open=./" "--watch=./"];
           manager = "web";
 
           # PORT 환경 변수 설정
